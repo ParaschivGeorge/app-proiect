@@ -8,7 +8,7 @@ run_s:
 	time ./s_brownian
 
 run_pth:
-	time ./pth_brownian1
+	time ./pth_brownian
 	convert -rotate "90" brownian_tree1.bmp brownian_tree1r.bmp
 	convert -rotate "180" brownian_tree2.bmp brownian_tree2r.bmp
 	convert -rotate "270" brownian_tree3.bmp brownian_tree3r.bmp

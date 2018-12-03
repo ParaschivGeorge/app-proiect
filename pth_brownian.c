@@ -7,30 +7,34 @@
         #include <FreeImage.h>
         #include <pthread.h>
         #include <stdio.h>
-         
-        #define NUM_PARTICLES  1000
+
+        #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
+
+        #define NUM_PARTICLES  10000
         #define SIZE           800
          
         void draw_brownian_tree(int world[SIZE / 2][SIZE / 2]){
           int px, py; // particle values
           int dx, dy; // offsets
           int i;
+          int cmp_val;
          
-          for (i = 0; i < NUM_PARTICLES / 4; i++){
+          for (i = 0; i < NUM_PARTICLES / 4; i++) {
+            cmp_val = MIN((i + 1), SIZE / 2);
             // set particle's initial position
-            px = rand() % (i + 1);
-            py = rand() % (i + 1);
-         
-            // printf("%d\n", i);
+            px = rand() % cmp_val;
+            py = rand() % cmp_val;        
+            
             while (1){
+              // printf("i: %d px: %d py: %d\n", i, px, py);
               // randomly choose a direction
               dx = rand() % 3 - 1;
               dy = rand() % 3 - 1;
          
-              if (dx + px < 0 || dx + px >= SIZE / 2 || dy + py < 0 || dy + py >= SIZE / 2){
+              if (dx + px < 0 || dx + px >= cmp_val || dy + py < 0 || dy + py >= cmp_val){
                 // plop the particle into some other random location
-                px = rand() % (i + 1);
-                py = rand() % (i + 1);
+                px = rand() % cmp_val;
+                py = rand() % cmp_val;
               }else if (world[py + dy][px + dx] != 0){
                 // bumped into something
                 world[py][px] = 1;
