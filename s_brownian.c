@@ -4,8 +4,8 @@
 #include <math.h>
 #include <FreeImage.h>
  
-#define NUM_PARTICLES  10000
-#define SIZE           800
+#define NUM_PARTICLES  50000
+#define SIZE           1000
  
 void draw_brownian_tree(int world[SIZE][SIZE]){
   int px, py; // particle values
@@ -60,6 +60,6 @@ int main(){
       FreeImage_SetPixelColor(img, x, y, &rgb);
     }
   }
-  FreeImage_Save(FIF_BMP, img, "brownian_tree.bmp", 0);
+  FreeImage_Save(FIF_BMP, img, "brownian_tree_s.bmp", 0);
   FreeImage_Unload(img);
 }

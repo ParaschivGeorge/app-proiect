@@ -1,100 +1,101 @@
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+#include <math.h>
+// #include <FreeImage.h>
+#include <stdio.h>
+#include <pthread.h>
+ 
+#define NUM_PARTICLES  10000
+#define SIZE           800
 
+int world[SIZE][SIZE];
+int num_threads = 1;
 
-        #include <string.h>
-        #include <stdlib.h>
-        #include <time.h>
-        #include <math.h>
-        #include <FreeImage.h>
-        #include <pthread.h>
-        #include <stdio.h>
+void *move_particle(void *threadid) {
+    int i;
+    int px, py; // particle values
+    int dx, dy; // offsets
+    long tid = (long)threadid;
+    unsigned int seed = (unsigned int)threadid;
+    
+    srand((unsigned)time(NULL));
 
-        #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
+    for (i = 0; i < NUM_PARTICLES / num_threads; i++) {
+        // set particle's initial position
+        px = rand_r(&seed) % SIZE;
+        py = rand_r(&seed) % SIZE;
 
-        #define NUM_PARTICLES  10000
-        #define SIZE           800
-         
-        void draw_brownian_tree(int world[SIZE / 2][SIZE / 2]){
-          int px, py; // particle values
-          int dx, dy; // offsets
-          int i;
-          int cmp_val;
-         
-          for (i = 0; i < NUM_PARTICLES / 4; i++) {
-            cmp_val = MIN((i + 1), SIZE / 2);
-            // set particle's initial position
-            px = rand() % cmp_val;
-            py = rand() % cmp_val;        
-            
-            while (1){
-              // printf("i: %d px: %d py: %d\n", i, px, py);
-              // randomly choose a direction
-              dx = rand() % 3 - 1;
-              dy = rand() % 3 - 1;
-         
-              if (dx + px < 0 || dx + px >= cmp_val || dy + py < 0 || dy + py >= cmp_val){
+        while (1){
+            // randomly choose a direction
+            dx = rand_r(&seed) % 3 - 1;
+            dy = rand_r(&seed) % 3 - 1;
+        
+            if (dx + px < 0 || dx + px >= SIZE || dy + py < 0 || dy + py >= SIZE){
                 // plop the particle into some other random location
-                px = rand() % cmp_val;
-                py = rand() % cmp_val;
-              }else if (world[py + dy][px + dx] != 0){
+                px = rand_r(&seed) % SIZE;
+                py = rand_r(&seed) % SIZE;
+            } else if (world[py + dy][px + dx] != 0){
                 // bumped into something
                 world[py][px] = 1;
                 break;
-              }else{
+            } else {
                 py += dy;
                 px += dx;
-              }
             }
-          }
         }
-         
-        void *DrawMapQuarter(void *threadid) {  
-          int x, y;
-          long tid = (long)threadid;
-          FIBITMAP * img;
-          RGBQUAD rgb;
-          int world[SIZE / 2][SIZE / 2];
-          memset(world, 0, sizeof world);
-          // set the seed
-          world[0][0] = 1;
-         
-          printf("%ld here \n", tid);
-          draw_brownian_tree(world);
-          printf("%ld here 2 \n", tid);
-         
-          img = FreeImage_Allocate(SIZE / 2, SIZE / 2, 32, 0, 0, 0);
-         
-          for (y = 0; y < SIZE / 2; y++){
-            for (x = 0; x < SIZE / 2; x++){
-              rgb.rgbRed = rgb.rgbGreen = rgb.rgbBlue = (world[y][x] ? 255 : 0);
-              FreeImage_SetPixelColor(img, x, y, &rgb);
-            }
-          }
-          char file[100] = "brownian_tree";
-          char s_tid[10];
-          sprintf(s_tid,"%ld", tid);
-          strcat(file, s_tid);
-          strcat(file, ".bmp");
-          FreeImage_Save(FIF_BMP, img, file, 0);
-          FreeImage_Unload(img);
-         
-          pthread_exit(NULL);
-        }
-         
-        int main(){
-          pthread_t threads[4];
-          long t;
-          int rc;
-          srand((unsigned)time(NULL));
-         
-          for (t = 0; t < 4; t++) {
-            rc = pthread_create(&threads[t], NULL, DrawMapQuarter, (void *)t);
-            if (rc) {
-              printf("ERROR; return code from pthread_create() is %d\n", rc);
-              exit(-1);
-            }
-          }
-         
-          pthread_exit(NULL);
-        }
+    }
+}
 
+void draw_brownian_tree(int world[SIZE][SIZE]){
+    int x, rc;
+    pthread_t threads[num_threads];
 
+    // set the seed
+    world[rand() % SIZE][rand() % SIZE] = 1;
+ 
+  
+    for (x = 0; x < num_threads; x++) {
+        rc = pthread_create(&threads[x], NULL, move_particle, (void *)x);
+    }
+    for (x = 0; x < num_threads; x++) {
+        pthread_join(threads[x], NULL);
+    }
+}
+ 
+int main(int argc, char *argv[]){
+  // FIBITMAP * img;
+  // RGBQUAD rgb;
+  // int x, y;
+ 
+  memset(world, 0, sizeof world);
+
+  if (argc >= 2) {
+      int num = atoi(argv[1]);
+      if (num <= 0) {
+        printf("Invalid argument provided for number of threads.\n");
+        printf("Please provide a valid number of threads as the first argument.\n");
+        printf("Program will run on 1 thread.\n");
+      } else {
+        printf("Running the program on %d threads", num);
+        num_threads = num;
+      }      
+  } else {
+    printf("No argument provided for number of threads.\n");
+    printf("Please provide a valid number of threads as the first argument.\n");
+    printf("Program will run on 1 thread.\n");
+  }
+ 
+  draw_brownian_tree(world);
+ 
+  // img = FreeImage_Allocate(SIZE, SIZE, 32, 0, 0, 0);
+ 
+  // for (y = 0; y < SIZE; y++){
+  //   for (x = 0; x < SIZE; x++){
+  //     rgb.rgbRed = rgb.rgbGreen = rgb.rgbBlue = (world[y][x] ? 255 : 0);
+  //     FreeImage_SetPixelColor(img, x, y, &rgb);
+  //   }
+  // }
+  // FreeImage_Save(FIF_BMP, img, "brownian_tree_pth.bmp", 0);
+  // FreeImage_Unload(img);
+}
