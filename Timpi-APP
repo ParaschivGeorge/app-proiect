@@ -1,0 +1,477 @@
+Brownian_S : Particles 10 000 size 800
+
+71.64 s
+136.38 s
+38.91 s
+94.88 s
+62.42 s
+100.71 s
+46.86 s
+50.50 s
+138.67 s
+69.31 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 800 threads 4
+
+10.87 s
+10.57 s
+10.42 s
+10.85 s
+10.52 s
+
+Brownian_PTH : Particles 10 000 size 800 threads 4
+
+10.05 s
+10.26 s
+10.33 s
+10.45 s
+10.06 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 800 threads 8
+
+5.95 s
+5.71 s
+5.56 s
+5.62 s
+5.53 s
+
+Brownian_PTH : Particles 10 000 size 800 threads 8
+
+5.36 s
+5.18 s
+5.35 s
+5.36 s
+5.21 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 800 threads 16
+
+3.52 s
+3.91 s
+3.68 s
+3.62 s
+3.71 s
+
+Brownian_PTH : Particles 10 000 size 800 threads 16
+
+3.50 s
+3.65 s
+3.44 s
+3.49 s
+3.42 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 800 threads 20
+
+3.50 s
+3.22 s
+3.44 s
+3.42 s
+3.56 s
+
+Brownian_PTH : Particles 10 000 size 800 threads 20
+
+3.18 s
+3.37 s
+3.22 s
+3.31 s
+3.20 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 800 threads 24
+
+3.13 s
+3.11 s
+3.13 s
+3.09 s
+3.04 s
+
+Brownian_PTH : Particles 10 000 size 800 threads 24
+
+3.05 s
+3.18 s
+3.03 s
+3.02 s
+3.07 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 800 threads 28
+
+3.22 s
+3.16 s
+3.22 s
+3.23 s
+3.28 s
+
+Brownian_PTH : Particles 10 000 size 800 threads 28
+
+3.12 s
+3.08 s
+3.11 s
+3.14 s
+3.15 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 800 threads 32
+
+3.25 s
+3.26 s
+3.18 s
+3.34 s
+3.42 s
+
+Brownian_PTH : Particles 10 000 size 800 threads 32
+
+3.10 s
+3.14 s
+3.15 s
+3.19 s
+3.22 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 800 threads 40
+
+3.16 s
+3.22 s
+3.09 s
+3.08 s
+3.20 s
+
+Brownian_PTH : Particles 10 000 size 800 threads 40
+
+2.94 s
+3.05 s
+2.98 s
+2.98 s
+2.96 s
+
++++++++++++++++++QQQQQQ++++++++++++++++++++++
+
+Brownian_S : Particles 50 000 size 800
+
+151.59 s
+197.81 s
+207.54 s
+234.01 s
+220.95 s
+230.53 s
+193.57 s
+154.03 s
+150.31 s
+149.96 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 50 000 size 800 threads 4
+
+20.31 s
+19.23 s
+18.74 s
+19.52 s
+19.17 s
+
+Brownian_PTH : Particles 50 000 size 800 threads 4
+
+18.54 s
+17.90 s
+18.63 s
+18.44 s
+19.05 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 50 000 size 800 threads 8
+
+10.32 s
+10.62 s
+9.84 s
+10.01 s
+10.44 s
+
+Brownian_PTH : Particles 50 000 size 800 threads 8
+
+9.86 s
+9.36 s
+9.61 s
+9.91 s
+9.52 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 50 000 size 800 threads 16
+
+7.11 s
+6.40 s
+6.15 s
+6.28 s
+6.47 s
+6.45 s
+
+Brownian_PTH : Particles 50 000 size 800 threads 16
+
+6.01 s
+6.41 s
+6.11 s
+6.36 s
+5.76 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 50 000 size 800 threads 20
+
+5.84 s
+6.35 s
+5.80 s
+6.20 s
+5.82 s
+
+Brownian_PTH : Particles 50 000 size 800 threads 20
+
+5.64 s
+5.85 s
+5.74 s
+5.50 s
+5.92 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 50 000 size 800 threads 24
+
+5.81 s
+5.58 s
+5.71 s
+5.56 s
+5.51 s
+
+Brownian_PTH : Particles 50 000 size 800 threads 24
+
+5.43 s
+5.47 s
+5.39 s
+5.38 s
+5.78 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 50 000 size 800 threads 28
+
+5.82 s
+5.59 s
+5.62 s
+5.71 s
+5.57 s
+
+Brownian_PTH : Particles 50 000 size 800 threads 28
+
+5.42 s
+5.44 s
+5.50 s
+5.47 s
+5.70 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 50 000 size 800 threads 32
+
+5.95 s
+5.71 s
+5.38 s
+5.66 s
+5.54 s
+
+Brownian_PTH : Particles 50 000 size 800 threads 32
+
+5.59 s
+5.29 s
+5.51 s
+5.41 s
+5.48 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 50 000 size 800 threads 40
+
+5.65 s
+5.53 s
+5.69 s
+5.71 s
+5.50 s
+
+Brownian_PTH : Particles 50 000 size 800 threads 40
+
+5.63 s
+5.52 s
+5.59 s
+5.19 s
+5.22 s
+
+
++++++++++++++++++QQQQQQ++++++++++++++++++++++
+
+
+Brownian_S : Particles 10 000 size 1200
+
+137.11 s
+138.61 s
+114.80 s
+147.19 s
+171.30 s
+662.98 s
+180.70 s
+286.52 s
+308.12 s
+135.12 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 1200 threads 4
+
+27.63 s
+29.06 s
+28.24 s
+28.17 s
+29.03 s
+
+Brownian_PTH : Particles 10 000 size 1200 threads 4
+
+28.59 s
+28.53 s
+29.02 s
+29.52 s
+28.88 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 1200 threads 8
+
+15.83 s
+15.41 s
+16.06 s
+14.63 s
+15.07 s
+
+Brownian_PTH : Particles 10 000 size 1200 threads 8
+
+15.06 s
+15.51 s
+14.71 s
+15.15 s
+14.44 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 1200 threads 16
+
+9.41 s
+9.66 s
+9.95 s
+9.79 s
+9.64 s
+
+Brownian_PTH : Particles 10 000 size 1200 threads 16
+
+9.73 s
+9.42 s
+9.71 s
+9.39 s
+9.95 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 1200 threads 20
+
+9.40 s
+8.90 s
+9.20 s
+9.33 s
+9.27 s
+
+Brownian_PTH : Particles 10 000 size 1200 threads 20
+
+8.89 s
+8.63 s
+9.21 s
+9.29 s
+9.02 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 1200 threads 24
+
+8.29 s
+8.66 s
+9.90 s
+8.36 s
+8.48 s
+
+Brownian_PTH : Particles 10 000 size 1200 threads 24
+
+8.11 s
+7.96 s
+8.31 s
+8.77 s
+8.13 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 1200 threads 28
+
+8.75 s
+8.66 s
+8.42 s
+8.76 s
+8.66 s
+
+Brownian_PTH : Particles 10 000 size 1200 threads 28
+
+8.26 s
+8.13 s
+8.49 s
+8.72 s
+8.48 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 1200 threads 32
+
+8.90 s
+8.13 s
+8.77 s
+8.50 s
+8.77 s
+
+Brownian_PTH : Particles 10 000 size 1200 threads 32
+
+8.74 s
+8.54 s
+8.56 s
+8.65 s
+8.74 s
+
+---------------------------------------------------------------
+
+Brownian_Omp : Particles 10 000 size 1200 threads 40
+
+8.48 s
+8.48 s
+8.70 s
+8.35 s
+8.28 s
+
+Brownian_PTH : Particles 10 000 size 1200 threads 40
+
+8.12 s
+8.53 s
+8.20 s
+8.37 s
+8.28 s
